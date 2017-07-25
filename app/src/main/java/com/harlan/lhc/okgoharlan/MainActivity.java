@@ -2,7 +2,7 @@ package com.harlan.lhc.okgoharlan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +13,7 @@ import com.harlan.lhc.okgoharlan.Imagerloader.GlideImageLoader;
 import com.harlan.lhc.okgoharlan.callback.DialogCallback;
 import com.harlan.lhc.okgoharlan.moder.LhcResponse;
 import com.harlan.lhc.okgoharlan.moder.ServerModel;
+import com.harlan.lhc.okgoharlan.okrx2.ServerApi;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
@@ -24,7 +25,8 @@ import com.lzy.okgo.convert.StringConvert;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
-import com.lzy.okrx.adapter.ObservableResponse;
+import com.lzy.okrx2.adapter.ObservableResponse;
+
 
 import org.json.JSONObject;
 
@@ -38,10 +40,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import rx.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
-import rx.schedulers.Schedulers;
+
+
 
 public class MainActivity extends BaseActivity {
 
@@ -86,7 +93,80 @@ public class MainActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.cacheokrx2:
+             /*   ServerApi.getString("aaa", "bbb")//
+                        .subscribeOn(Schedulers.io())//
 
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(@NonNull Disposable disposable) throws Exception {
+                                showLoading();
+                            }
+                        })//
+                        .observeOn(AndroidSchedulers.mainThread())  //
+                        .subscribe(new Observer<String>() {
+                            @Override
+                            public void onSubscribe(@NonNull Disposable d) {
+
+                            }
+
+
+                            @Override
+                            public void onNext(@NonNull String s) {
+
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                e.printStackTrace();            //请求失败
+                                showToast("请求失败");
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                dismissLoading();
+                            }
+
+
+                        });*/
+                OkGo.<String>post(Urls.URL_METHOD)//
+                        .headers("aaa", "111")//
+                        .params("bbb", "222")//
+                        .cacheKey("rx_cache")              //这里完全同okgo的配置一样
+                        .cacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)  //这里完全同okgo的配置一样
+                        .converter(new StringConvert())//
+                        .adapt(new ObservableResponse<String>())//
+                        .subscribeOn(Schedulers.io())//
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(@NonNull Disposable disposable) throws Exception {
+                                showLoading();
+                            }
+                        })//
+                        .observeOn(AndroidSchedulers.mainThread())//
+                        .subscribe(new Observer<Response<String>>() {
+                            @Override
+                            public void onSubscribe(@NonNull Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(@NonNull Response<String> response) {
+                                 text.setText(response.body());
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                e.printStackTrace();
+                                showToast("请求失败");
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                dismissLoading();
+                            }
+                        });
                 break;
             case R.id.post:
                 OkGo.<LhcResponse<ServerModel>>post(Urls.URL_METHOD)//

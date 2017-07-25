@@ -26,7 +26,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.lzy.net:okgo:+'
-    compile 'com.lzy.net:okrx:+'
+
     compile 'com.lzy.net:okserver:+'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.lzy.widget:imagepicker:0.3.2'
