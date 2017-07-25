@@ -10,18 +10,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="clear" />
         <Button
             android:id="@+id/get"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="get" />
-
         <Button
             android:id="@+id/post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="post" />
+
+        <Button
+            android:id="@+id/postJson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="postJson" />
+        <Button
+            android:id="@+id/upString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="upString" />
+        <Button
+            android:id="@+id/upBytes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="upBytes" />
+        <Button
+            android:id="@+id/Upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload" />
+        <Button
+            android:id="@+id/fileDownload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fileDownload" />
+        <Button
+            android:id="@+id/cacheokrx2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="cacheokrx2" />
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"

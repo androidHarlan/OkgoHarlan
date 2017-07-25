@@ -22,13 +22,18 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    //版本号使用 + 可以自动引用最新版
-    //版本号使用 + 可以自动引用最新版
-    //版本号使用 + 可以自动引用最新版
+
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.lzy.net:okgo:+'
     compile 'com.lzy.net:okrx:+'
     compile 'com.lzy.net:okserver:+'
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.lzy.widget:imagepicker:0.3.2'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.lzy.widget:ninegridview:0.2.1'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.readystatesoftware.chuck:library:1.0.4'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.lzy.net:okrx2:+'
 }

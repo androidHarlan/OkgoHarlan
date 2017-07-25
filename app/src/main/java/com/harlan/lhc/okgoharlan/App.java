@@ -104,6 +104,7 @@ public class App extends Application{
         // 其他统一的配置
         // 详细说明看GitHub文档：https://github.com/jeasonlzy/
         OkGo.getInstance().init(this)                           //必须调用初始化
+
                 .setOkHttpClient(builder.build())               //建议设置OkHttpClient，不设置会使用默认的
                 .setCacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
                 .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
