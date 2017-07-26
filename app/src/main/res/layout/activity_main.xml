@@ -56,6 +56,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="cacheokrx2" />
+        <Button
+            android:id="@+id/mvp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="mvp模式" />
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"

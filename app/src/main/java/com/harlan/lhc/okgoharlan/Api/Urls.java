@@ -15,6 +15,8 @@ public class Urls {
     public static final String URL_TEXT_UPLOAD = SERVER + "uploadString";
     public static final String URL_DOWNLOAD = "http://apk.hiapk.com/appdown/com.mojang.minecraftpe";
     public static final String URL_REDIRECT = SERVER + "redirect";
+    public static final String test ="http://tpi.lingbao8.com/app/propertys/group";
+
 
     public static final String URL_GANK_BASE = "http://gank.io/api/data/";
 }

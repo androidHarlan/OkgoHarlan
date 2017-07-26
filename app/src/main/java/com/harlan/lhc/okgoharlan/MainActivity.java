@@ -2,7 +2,6 @@ package com.harlan.lhc.okgoharlan;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import com.harlan.lhc.okgoharlan.Imagerloader.GlideImageLoader;
 import com.harlan.lhc.okgoharlan.callback.DialogCallback;
 import com.harlan.lhc.okgoharlan.moder.LhcResponse;
 import com.harlan.lhc.okgoharlan.moder.ServerModel;
-import com.harlan.lhc.okgoharlan.okrx2.ServerApi;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
@@ -27,27 +25,21 @@ import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.lzy.okrx2.adapter.ObservableResponse;
 
-
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-
-
 
 
 public class MainActivity extends BaseActivity {
@@ -72,6 +64,8 @@ public class MainActivity extends BaseActivity {
     Button post;
     @Bind(R.id.cacheokrx2)
     Button cacheokrx2;
+    @Bind(R.id.mvp)
+    Button mvp;
     private ArrayList<ImageItem> imageItems;
 
     @Override
@@ -89,9 +83,13 @@ public class MainActivity extends BaseActivity {
         OkGo.getInstance().cancelTag(this);
     }
 
-    @OnClick({R.id.cacheokrx2,R.id.post, R.id.fileDownload, R.id.upString, R.id.upBytes, R.id.Upload, R.id.clear, R.id.get, R.id.postJson})
+    @OnClick({R.id.mvp,R.id.cacheokrx2, R.id.post, R.id.fileDownload, R.id.upString, R.id.upBytes, R.id.Upload, R.id.clear, R.id.get, R.id.postJson})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.mvp:
+                Intent intent1=new Intent(MainActivity.this,MVP.class);
+                startActivity(intent1);
+                break;
             case R.id.cacheokrx2:
              /*   ServerApi.getString("aaa", "bbb")//
                         .subscribeOn(Schedulers.io())//
@@ -152,7 +150,7 @@ public class MainActivity extends BaseActivity {
 
                             @Override
                             public void onNext(@NonNull Response<String> response) {
-                                 text.setText(response.body());
+                                text.setText(response.body());
                             }
 
                             @Override
